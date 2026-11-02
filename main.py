@@ -52,7 +52,7 @@ def main():
             elif choice == 3:
                 game.show_quiz_list()
             elif choice == 4:
-                print("🗑️ 퀴즈 삭제 기능은 준비 중입니다.")
+                game.delete_quiz()
             elif choice == 5:
                 print("🏆 최고 점수 기능은 준비 중입니다.")
             elif choice == 6:

@@ -209,5 +209,49 @@ class QuizGame:
 
         print("\n========================================")
 
+    def delete_quiz(self):
+        """퀴즈를 선택하여 삭제하고 저장합니다."""
+
+        if not self.quizzes:
+            print("⚠️ 삭제할 퀴즈가 없습니다.")
+            return
+
+        self.show_quiz_list()
+
+        number = get_number(
+            f"삭제할 문제 번호 (1~{len(self.quizzes)}): ",
+            1,
+            len(self.quizzes)
+        )
+
+        index = number - 1
+        target = self.quizzes[index]
+
+        print(f"\n선택한 문제: {target.question}")
+
+        while True:
+            confirm = input(
+                "정말 삭제하시겠습니까? (y/n): "
+            ).strip().lower()
+
+            if confirm in ("y", "n"):
+                break
+
+            print("⚠️ y 또는 n을 입력해주세요.")
+
+        if confirm == "n":
+            print("ℹ️ 퀴즈 삭제를 취소했습니다.")
+            return
+
+        removed_quiz = self.quizzes.pop(index)
+
+        if self.save_state():
+            print("\n✅ 퀴즈가 삭제되었습니다!")
+            print(f"📋 남은 퀴즈: {len(self.quizzes)}개")
+            print("💾 변경사항이 저장되었습니다.")
+        else:
+            self.quizzes.insert(index, removed_quiz)
+            print("⚠️ 저장 실패로 삭제를 취소했습니다.")
+
 
 

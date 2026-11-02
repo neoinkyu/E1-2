@@ -5,7 +5,18 @@ from pathlib import Path
 
 from default_quizzes import get_default_quizzes
 from quiz import Quiz
-from quiz_play import play_quiz
+from quiz_play import play_quiz, get_number
+
+
+def get_required_text(prompt):
+    """빈칸이 아닌 문자열을 입력받습니다."""
+    while True:
+        value = input(prompt).strip()
+
+        if value:
+            return value
+
+        print("⚠️ 빈 내용은 입력할 수 없습니다.")
 
 
 class QuizGame:
@@ -136,3 +147,44 @@ class QuizGame:
 
         if self.save_state():
             print("💾 게임 결과가 저장되었습니다.")
+
+    def add_quiz(self):
+        """새로운 퀴즈를 등록하고 저장합니다."""
+
+        print("\n========================================")
+        print("📌 새로운 퀴즈 등록")
+        print("========================================")
+
+        question = get_required_text("문제를 입력하세요: ")
+
+        choices = []
+        for number in range(1, 5):
+            choice = get_required_text(f"선택지 {number}: ")
+            choices.append(choice)
+
+        answer = get_number("정답 번호 (1~4): ", 1, 4)
+
+        hint = get_required_text("힌트를 입력하세요: ")
+
+        try:
+            new_quiz = Quiz(
+                question=question,
+                choices=choices,
+                answer=answer,
+                hint=hint
+            )
+        except ValueError as error:
+            print(f"⚠️ 퀴즈 등록 실패: {error}")
+            return
+
+        self.quizzes.append(new_quiz)
+
+        if self.save_state():
+            print("\n✅ 새로운 퀴즈가 등록되었습니다!")
+            print(f"📋 전체 퀴즈: {len(self.quizzes)}개")
+            print("💾 데이터 저장 완료")
+        else:
+            self.quizzes.pop()
+            print("⚠️ 저장 실패로 퀴즈 등록을 취소했습니다.")
+
+

@@ -1,4 +1,8 @@
 
+from default_quizzes import get_default_quizzes
+from quiz_play import play_quiz
+
+
 def show_menu():
     print("\n========================================")
     print("     🎯 파이썬·Git 기초 퀴즈 게임")
@@ -34,30 +38,32 @@ def get_menu_choice():
 
 
 def main():
+    quizzes = get_default_quizzes()
+
     while True:
-        show_menu()
-
         try:
+            show_menu()
             choice = get_menu_choice()
-        except (KeyboardInterrupt, EOFError):
-            print("\n입력이 중단되었습니다.")
-            print("프로그램을 안전하게 종료합니다.")
-            break
 
-        if choice == 1:
-            print("📝 퀴즈 풀기 기능은 준비 중입니다.")
-        elif choice == 2:
-            print("📌 퀴즈 추가 기능은 준비 중입니다.")
-        elif choice == 3:
-            print("📋 퀴즈 목록 기능은 준비 중입니다.")
-        elif choice == 4:
-            print("🗑️ 퀴즈 삭제 기능은 준비 중입니다.")
-        elif choice == 5:
-            print("🏆 최고 점수 기능은 준비 중입니다.")
-        elif choice == 6:
-            print("📊 게임 기록 기능은 준비 중입니다.")
-        else:
-            print("👋 퀴즈 게임을 종료합니다.")
+            if choice == 1:
+                play_quiz(quizzes)
+            elif choice == 2:
+                print("📌 퀴즈 추가 기능은 준비 중입니다.")
+            elif choice == 3:
+                print("📋 퀴즈 목록 기능은 준비 중입니다.")
+            elif choice == 4:
+                print("🗑️ 퀴즈 삭제 기능은 준비 중입니다.")
+            elif choice == 5:
+                print("🏆 최고 점수 기능은 준비 중입니다.")
+            elif choice == 6:
+                print("📊 게임 기록 기능은 준비 중입니다.")
+            else:
+                print("👋 퀴즈 게임을 종료합니다.")
+                break
+
+        except (KeyboardInterrupt, EOFError):
+            print("\n⚠️ 입력이 중단되었습니다.")
+            print("프로그램을 안전하게 종료합니다.")
             break
 
 

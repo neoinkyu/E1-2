@@ -4,3 +4,5 @@ __pycache__/
 .venv/
 .env
 state.json
+state.json.tmp
+state.corrupt-*.json

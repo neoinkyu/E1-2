@@ -1,6 +1,5 @@
 
-from default_quizzes import get_default_quizzes
-from quiz_play import play_quiz
+from quiz_game import QuizGame
 
 
 def show_menu():
@@ -37,8 +36,9 @@ def get_menu_choice():
         print("⚠️ 1~7 사이의 숫자를 입력해주세요.")
 
 
+
 def main():
-    quizzes = get_default_quizzes()
+    game = QuizGame()
 
     while True:
         try:
@@ -46,7 +46,7 @@ def main():
             choice = get_menu_choice()
 
             if choice == 1:
-                play_quiz(quizzes)
+                game.play()
             elif choice == 2:
                 print("📌 퀴즈 추가 기능은 준비 중입니다.")
             elif choice == 3:
@@ -58,11 +58,14 @@ def main():
             elif choice == 6:
                 print("📊 게임 기록 기능은 준비 중입니다.")
             else:
+                if game.save_state():
+                    print("💾 데이터를 저장했습니다.")
                 print("👋 퀴즈 게임을 종료합니다.")
                 break
 
         except (KeyboardInterrupt, EOFError):
             print("\n⚠️ 입력이 중단되었습니다.")
+            game.save_state()
             print("프로그램을 안전하게 종료합니다.")
             break
 

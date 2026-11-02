@@ -253,5 +253,40 @@ class QuizGame:
             self.quizzes.insert(index, removed_quiz)
             print("⚠️ 저장 실패로 삭제를 취소했습니다.")
 
+    def show_best_score(self):
+        """지금까지 기록한 최고 점수를 출력합니다."""
+
+        print("\n========================================")
+        print("🏆 최고 점수 확인")
+        print("========================================")
+
+        if self.best_score is None:
+            print("아직 퀴즈를 풀지 않았습니다.")
+            print("퀴즈를 풀면 최고 점수가 기록됩니다.")
+            return
+
+        print(f"🏆 최고 점수: {self.best_score}점 / 100점")
+
+        best_record = next(
+            (
+                record
+                for record in reversed(self.history)
+                if record.get("score") == self.best_score
+            ),
+            None
+        )
+
+        if best_record is not None:
+            print(
+                f"정답 개수: {best_record['correct_count']}개 "
+                f"/ {best_record['total_questions']}개"
+            )
+            print(f"힌트 사용: {best_record['hint_used_count']}회")
+            print(f"기록 시각: {best_record['played_at']}")
+        else:
+            print("최고 점수의 상세 기록이 없습니다.")
+
+        print("========================================")
+
 
 

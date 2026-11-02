@@ -54,7 +54,7 @@ def main():
             elif choice == 4:
                 game.delete_quiz()
             elif choice == 5:
-                print("🏆 최고 점수 기능은 준비 중입니다.")
+                game.show_best_score()
             elif choice == 6:
                 print("📊 게임 기록 기능은 준비 중입니다.")
             else:

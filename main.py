@@ -56,7 +56,7 @@ def main():
             elif choice == 5:
                 game.show_best_score()
             elif choice == 6:
-                print("📊 게임 기록 기능은 준비 중입니다.")
+                game.show_history()
             else:
                 if game.save_state():
                     print("💾 데이터를 저장했습니다.")

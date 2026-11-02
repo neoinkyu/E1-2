@@ -288,5 +288,47 @@ class QuizGame:
 
         print("========================================")
 
+    def show_history(self):
+        """저장된 게임 기록을 최신순으로 출력합니다."""
+
+        print("\n========================================")
+        print("📊 게임 기록 조회")
+        print("========================================")
+
+        if not self.history:
+            print("⚠️ 아직 저장된 게임 기록이 없습니다.")
+            print("퀴즈를 풀면 결과가 자동으로 기록됩니다.")
+            return
+
+        print(f"전체 게임 기록: {len(self.history)}회")
+
+        # 최근 기록부터 출력
+        for number, record in enumerate(
+            reversed(self.history), start=1
+        ):
+            played_at = record.get("played_at", "기록 없음")
+
+            # ISO 형식의 날짜를 보기 쉽게 변환
+            try:
+                date_text = datetime.fromisoformat(
+                    played_at
+                ).strftime("%Y-%m-%d %H:%M:%S")
+            except (ValueError, TypeError):
+                date_text = str(played_at)
+
+            print("\n----------------------------------------")
+            print(f"[기록 {number}] {date_text}")
+            print(f"점수: {record.get('score', 0)}점 / 100점")
+            print(
+                f"정답: {record.get('correct_count', 0)}개 "
+                f"/ {record.get('total_questions', 0)}개"
+            )
+            print(
+                f"힌트 사용: "
+                f"{record.get('hint_used_count', 0)}회"
+            )
+
+        print("\n========================================")
+
 
 

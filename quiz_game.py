@@ -186,5 +186,28 @@ class QuizGame:
         else:
             self.quizzes.pop()
             print("⚠️ 저장 실패로 퀴즈 등록을 취소했습니다.")
+    
+    def show_quiz_list(self):
+        """현재 등록된 퀴즈 목록을 출력합니다."""
+
+        print("\n========================================")
+        print("📋 등록된 퀴즈 목록")
+        print("========================================")
+
+        if not self.quizzes:
+            print("⚠️ 등록된 퀴즈가 없습니다.")
+            return
+
+        print(f"전체 퀴즈: {len(self.quizzes)}개")
+
+        for number, quiz in enumerate(self.quizzes, start=1):
+            print("\n----------------------------------------")
+            print(f"[{number}] {quiz.question}")
+
+            for index, choice in enumerate(quiz.choices, start=1):
+                print(f"  {index}. {choice}")
+
+        print("\n========================================")
+
 
 

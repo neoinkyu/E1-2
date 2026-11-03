@@ -235,3 +235,26 @@ E1-2/
 ## 11. Git clone 및 pull 실습
 
 별도 디렉터리에 저장소를 복제하여 README를 수정하고 커밋했습니다.
+
+
+### Git clone 및 pull 실습 결과
+
+기존 작업 폴더와 별도로 GitHub 저장소를 복제했습니다.
+복제한 저장소에서 README를 수정하고 Commit·Push한 뒤,
+기존 작업 폴더에서 Pull하여 변경사항이 반영되는 것을 확인했습니다.
+
+**Git clone 성공 화면**
+
+![Git clone 실습](docs/screenshots/15-clone.png)
+
+**Git pull 성공 화면**
+
+![Git pull 실습](docs/screenshots/16-pull.png)
+
+### 전체 Git 커밋 및 브랜치 이력
+
+기능별 커밋을 수행하고, feature 브랜치에서 개발한
+퀴즈 출제 기능을 main 브랜치에 병합했습니다.
+
+![Git 커밋 이력](docs/screenshots/14-git-history.png)
+

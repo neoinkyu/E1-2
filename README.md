@@ -231,3 +231,7 @@ E1-2/
 ## 10. 개발 저장소
 
 [GitHub - neoinkyu/E1-2](https://github.com/neoinkyu/E1-2)
+
+## 11. Git clone 및 pull 실습
+
+별도 디렉터리에 저장소를 복제하여 README를 수정하고 커밋했습니다.

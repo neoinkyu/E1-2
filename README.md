@@ -61,6 +61,13 @@ Python의 변수, 자료형, 조건문, 반복문, 클래스와 Git의 주요 �
 
 ## 4. 설치 및 실행 방법
 
+### Python 및 Git 설치 (설치가 안 되어 있는 경우, 윈도우 환경 가정)
+
+```bash
+winget install -e --id Python.Python.3.14
+winget install -e --id Git.Git
+```
+
 ### GitHub 저장소 복제
 
 ```bash
